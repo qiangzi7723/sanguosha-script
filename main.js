@@ -1,5 +1,52 @@
-console.show();
-const { a } = require("./src/config.js");
-toast("开始执行脚本");
-click(760 * 2 + 50, 143 * 2 + 50);
-console.log(a);
+var { util } = require("./src/lib/util");
+
+toast("开始逐鹿天下脚本");
+
+util.click("冒险");
+sleep(1500);
+util.click("逐鹿天下");
+sleep(1500);
+util.click("取消");
+
+sleep(1500);
+util.click("leftButton");
+
+sleep(1500);
+util.click("leftButton");
+
+sleep(1500);
+util.click("夷州");
+
+sleep(1500);
+util.click("50");
+
+sleep(1500);
+util.click("挑战");
+
+sleep(1500);
+util.click("开始");
+
+sleep(60000);
+util.click("确定");
+
+sleep(1500);
+util.click("确定");
+
+// 再次循环
+
+for (var i = 0; i < 3; i++) {
+	sleep(1500);
+	util.click("50");
+
+	sleep(1500);
+	util.click("挑战");
+
+	sleep(1500);
+	util.click("开始");
+
+	sleep(60000);
+	util.click("确定");
+
+	sleep(1500);
+	util.click("确定");
+}
