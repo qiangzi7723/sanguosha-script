@@ -1,52 +1,39 @@
-var { util } = require("./src/lib/util");
-
+var utilTool = require("./src/lib/util.js");
+var demo = require("./src/asset/demo");
 toast("开始逐鹿天下脚本");
+// launchApp("三国杀十周年");
 
-util.click("冒险");
-sleep(1500);
-util.click("逐鹿天下");
-sleep(1500);
-util.click("取消");
+console.show();
 
-sleep(1500);
-util.click("leftButton");
+// //请求横屏截图
+threads.start(function () {
+	var beginBtn;
+	if (
+		(beginBtn = classNameContains("Button")
+			.textContains("立即开始")
+			.findOne(2000))
+	) {
+		sleep(1000);
+		beginBtn.click();
+	}
+	toast("点击屏幕");
+});
 
-sleep(1500);
-util.click("leftButton");
+var img = utilTool.util.capture();
+var imgBase = images.toBase64(img);
 
-sleep(1500);
-util.click("夷州");
+var url =
+	"https://aip.baidubce.com/rest/2.0/ocr/v1/accurate?access_token=24.9be9aa9c1d575bf54d97df9dce40d5ee.2592000.1622345789.282335-24095742";
 
-sleep(1500);
-util.click("50");
+var res = http.post(url, {
+	image: imgBase,
+});
 
-sleep(1500);
-util.click("挑战");
-
-sleep(1500);
-util.click("开始");
-
-sleep(60000);
-util.click("确定");
-
-sleep(1500);
-util.click("确定");
-
-// 再次循环
-
-for (var i = 0; i < 3; i++) {
-	sleep(1500);
-	util.click("50");
-
-	sleep(1500);
-	util.click("挑战");
-
-	sleep(1500);
-	util.click("开始");
-
-	sleep(60000);
-	util.click("确定");
-
-	sleep(1500);
-	util.click("确定");
-}
+var result = res.body.json().words_result;
+log(result);
+result.map(function (item) {
+	if (item.words == "动冒险") {
+		log(item);
+		click(item.location.left + 50, item.location.top + 50);
+	}
+});

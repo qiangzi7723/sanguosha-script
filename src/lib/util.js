@@ -1,6 +1,7 @@
 var { coordinate } = require("../config.js");
 function Util() {}
 
+// 点击某个按钮
 Util.prototype.click = function (name) {
 	for (var key in coordinate) {
 		if (key == name) {
@@ -9,6 +10,13 @@ Util.prototype.click = function (name) {
 			click(coordinate[key][0] * 2 + 100, coordinate[key][1] * 2 + 100);
 		}
 	}
+};
+
+// 截图
+Util.prototype.capture = function () {
+	requestScreenCapture(true);
+	sleep(1000);
+	return captureScreen();
 };
 
 module.exports = {
