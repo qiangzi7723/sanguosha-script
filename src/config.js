@@ -1,16 +1,11 @@
-var coordinate = {
-	冒险: [761, 143],
-	排行: [50, 90],
-	逐鹿天下: [538, 80],
-	取消: [605, 344],
-	leftButton: [197, 207],
-	夷州: [605, 203],
-	50: [859, 290],
-	挑战: [891, 359],
-	开始: [796, 411],
-	确定: [498, 445],
+var { accessToken } = require("../secret");
+
+var config = {
+	accessToken: accessToken,
+	webimageLoc: "https://aip.baidubce.com/rest/2.0/ocr/v1/webimage_loc",
+	basic: "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic",
 };
 
 module.exports = {
-	coordinate: coordinate,
+	config: config,
 };
